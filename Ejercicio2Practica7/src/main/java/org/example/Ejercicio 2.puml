@@ -1,0 +1,33 @@
+@startuml
+
+class Libro {
+  - titulo: String
+  - genero: String
+  + Libro(titulo: String, genero: String)
+  + getTitulo(): String
+  + getGenero(): String
+}
+
+class Cliente {
+  - nombre: String
+  - id: int
+  - historialDeCompras: List<Libro>
+  - recomendaciones: List<Libro>
+  + Cliente(nombre: String, id: int)
+  + agregarLibroHistorial(libro: Libro): void
+  + generarRecomendaciones(librosDisponibles: List<Libro>): void
+  + mostrarRecomendaciones(): void
+  + getNombre(): String
+  + getId(): int
+  + getHistorialDeCompras(): List<Libro>
+  + getRecomendaciones(): List<Libro>
+}
+
+class SistemaDeGestion {
+  + main(args: String[]): void
+}
+
+Cliente "1" -- "*" Libro : historialDeCompras >
+Cliente "1" -- "*" Libro : recomendaciones >
+
+@enduml

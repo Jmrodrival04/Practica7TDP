@@ -1,0 +1,34 @@
+@startuml
+package org.example {
+
+class BatallaNaval {
+    - cuadriculaJugador: Cuadricula
+    - cuadriculaIA: Cuadricula
+    - scanner: Scanner
+    - rand: Random
+    + BatallaNaval()
+    + iniciarJuego(): void
+}
+
+class Cuadricula {
+    - TAMANO: int
+    - tablero: int[][]
+    - rand: Random
+    - climaActual: String
+    - contadorTurnosLluvia: int
+    + Cuadricula()
+    + actualizarClima(): void
+    + colocarBarcosAleatoriamente(): void
+    + imprimirTablero(mostrarBarcos: boolean): void
+    + realizarAtaque(x: int, y: int): boolean
+    + verificarFinJuego(): boolean
+    + getClimaActual(): String
+    - revelarZonaAleatoria(): void
+    - aplicarTormenta(): void
+    - colocarBarcoAleatoriamente(longitud: int): void
+    - puedeColocarBarco(x: int, y: int, longitud: int, horizontal: boolean): boolean
+}
+
+BatallaNaval "1" -- "1" Cuadricula : contiene >
+}
+@enduml

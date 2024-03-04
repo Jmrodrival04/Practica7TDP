@@ -1,0 +1,21 @@
+@startuml
+
+class DadoIA {
+    - caras : int
+    - historialLanzamientos : Map<Integer, Integer>
+    - probabilidades : Map<Integer, Double>
+    - random : Random
+
+    + DadoIA(caras : int)
+    + lanzar() : int
+    - recalcularProbabilidades() : void
+    + predecirProbabilidad() : Map<Integer, Double>
+}
+
+class SimulacionDadoIA {
+    + main(args : String[]) : void
+}
+
+SimulacionDadoIA .down.> DadoIA : Uses
+
+@enduml
