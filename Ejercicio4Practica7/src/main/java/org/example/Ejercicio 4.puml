@@ -1,0 +1,38 @@
+@startuml
+
+class Cuadricula {
+    - TAMANO: int = 10
+    - tablero: int[][]
+    - rand: Random
+
+    + Cuadricula()
+    + colocarBarcosAleatoriamente(): void
+    + realizarAtaque(x: int, y: int): boolean
+    + verificarFinJuego(): boolean
+    + imprimirTablero(mostrarBarcos: boolean): void
+    - colocarBarco(size: int): void
+    - tryPlaceBoatHorizontal(x: int, y: int, size: int): boolean
+    - tryPlaceBoatVertical(x: int, y: int, size: int): boolean
+}
+
+class CuadriculaConIA {
+    - ataquesPendientes: Queue<int[]>
+
+    + decidirAtaque(): int[]
+    + realizarAtaque(x: int, y: int): boolean
+    - planificarAtaquesAdyacentes(x: int, y: int): void
+}
+
+class BatallaNaval {
+    - cuadriculaJugador: CuadriculaConIA
+    - cuadriculaIA: CuadriculaConIA
+    - scanner: Scanner
+
+    + BatallaNaval()
+    + iniciarJuego(): void
+}
+
+Cuadricula <|-- CuadriculaConIA
+BatallaNaval *-- CuadriculaConIA
+
+@enduml
